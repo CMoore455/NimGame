@@ -5,8 +5,119 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Nim"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="Nim Game" Height="550" Width="700">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="80*"/>
+            <ColumnDefinition Width="20*"/>
+        </Grid.ColumnDefinitions>
+        <!--Start Menu-->
+        <StackPanel x:Name="StartMenu"
+                    VerticalAlignment="Center" Margin="78,229,10,212.5" Height="81"
+                    Visibility="Collapsed">
+            <Button x:Name="PVCButton"
+                    Content="PVC"
+                    HorizontalAlignment="Center"
+                    Height="30"
+                    Width="60"
+                    Margin="5"
+                    />
+            <Button x:Name="PVPButton"
+                    Content="PVC"
+                    HorizontalAlignment="Center"
+                    Height="30"
+                    Width="60"
+                    Margin="5"
+                    />
+        </StackPanel>
+        <!--End of Start Menu-->
+
+        <!--Name Menu-->
+        <StackPanel x:Name="PVCNameMenu"
+                   VerticalAlignment="Center"
+                    Visibility="Collapsed">
+            <TextBox x:Name="PlayeNameBox"
+                     HorizontalAlignment="Center"
+                     Height="25"
+                     Width="275"
+                     />
+            <Button x:Name="PVCNameEnterButton"
+                    HorizontalAlignment="Center"
+                    Height="30"
+                    Width="60"
+                    Content="Enter"
+                    Margin="5"/>
+        </StackPanel>
+        <StackPanel x:Name="PVPNameMenu"
+                    VerticalAlignment="Center">
+            <Label Content="Player 1 Name:" HorizontalAlignment="Center"/>
+            <TextBox x:Name="PlayerOneNameBox"
+                         HorizontalAlignment="Center"
+                         Height="25"
+                         Width="275"/>
+            <Label Content="Player 2 Name:" HorizontalAlignment="Center"/>
+            <TextBox x:Name="PlayerTwoNameBox"
+                     HorizontalAlignment="Center"
+                     Height="25"
+                     Width="275"
+                     Margin="5"/>
+            <Button x:Name="PVPNameEnterButton"
+                    HorizontalAlignment="Center"
+                    Height="30"
+                    Width="60"
+                    Content="Enter"
+                    Margin="5"/>
+        </StackPanel>
+
+        <!--Diffculty Menu-->
+        <StackPanel x:Name="DifficultyMenu"
+                    VerticalAlignment="Center"
+                    Visibility="Collapsed">
+            <Button x:Name="EasyButton"
+                    Content="Easy"
+                    HorizontalAlignment="Center"
+                    Height="30"
+                    Width="60"
+                    Margin="5"/>
+            <Button x:Name="MedButton"
+                    Content="Medium"
+                    HorizontalAlignment="Center"
+                    Height="30"
+                    Width="60"
+                    Margin="5"/>
+            <Button x:Name="HardButton"
+                    Content="Hard"
+                    HorizontalAlignment="Center"
+                    Height="30"
+                    Width="60"
+                    Margin="5"/>
+
+        </StackPanel>
+        <!--End of Difficulty Menu-->
+
+
+
+        <!--Game Board-->
+        <Grid x:Name="GameBoardUI"
+              HorizontalAlignment="Center"
+              Width="400"
+              Visibility="Collapsed">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+        </Grid>
+        <!--End of Game Board-->
+
+        <!--Control Panel-->
+        <StackPanel x:Name="ControlPanel"
+                    Grid.Column="1"
+                    Visibility="Collapsed"
+                    >
+        </StackPanel>
+        <!--End of Control Panel-->
+
     </Grid>
 </Window>
