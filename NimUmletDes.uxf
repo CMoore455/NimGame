@@ -110,7 +110,7 @@ Three Buttons
 +TotalPieces: int
 +Board: int[][]
 --
-+TakeAwayPiece(): bool</panel_attributes>
++TakeAwayPiece(Row: int, Col: int): bool</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -126,8 +126,6 @@ Three Buttons
 +Rows: int
 +CurrentRow: int
 +CurrentTurn: int
-+CompRow: int
-+CompPiecestoRemove: int
 +Players: Players[]
 +board: Board
 --
