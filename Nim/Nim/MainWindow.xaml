@@ -128,7 +128,9 @@
                         <Label Background="Aqua"/>
                     </Border>
                 </DataTemplate>
-            </ListBox.ItemTemplate>              
+            </ListBox.ItemTemplate>     
+                
+                
         </ListBox>
               <ListBox x:Name="Row2ListBox"
                        Height="40"

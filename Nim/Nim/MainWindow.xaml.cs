@@ -60,6 +60,8 @@ namespace Nim
             Row2ListBox.ItemsSource = game.gameBoard.BoardState[1];
             DifficultyMenu.Visibility = Visibility.Collapsed;
             GameBoardUI.Visibility = Visibility.Visible;
+            Row3ListBox.Visibility = Visibility.Collapsed;
+            Row4ListBox.Visibility = Visibility.Collapsed;
             
         }
 
@@ -125,6 +127,7 @@ namespace Nim
             }
             DifficultyMenu.Visibility = Visibility.Collapsed;
             GameBoardUI.Visibility = Visibility.Visible;
+            Row4ListBox.Visibility = Visibility.Collapsed;
 
         }
 
