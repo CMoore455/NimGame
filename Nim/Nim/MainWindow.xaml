@@ -14,7 +14,7 @@
         <!--Start Menu-->
         <StackPanel x:Name="StartMenu"
                     VerticalAlignment="Center" Margin="78,229,10,212.5" Height="81"
-                    Visibility="Collapsed">
+                    Visibility="Visible">
             <Button x:Name="PVCButton"
                     Content="PVC"
                     HorizontalAlignment="Center"
@@ -35,7 +35,7 @@
         <!--Name Menu-->
         <StackPanel x:Name="PVCNameMenu"
                    VerticalAlignment="Center"
-                    Visibility="Collapsed">
+                    Visibility="Visible">
             <TextBox x:Name="PlayeNameBox"
                      HorizontalAlignment="Center"
                      Height="25"
@@ -79,7 +79,7 @@
                     HorizontalAlignment="Center"
                     Height="30"
                     Width="60"
-                    Margin="5"/>
+                    Margin="5" Click="EasyButton_Click"/>
             <Button x:Name="MedButton"
                     Content="Medium"
                     HorizontalAlignment="Center"
@@ -109,6 +109,17 @@
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
         </Grid>
         <!--End of Game Board-->
 

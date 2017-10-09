@@ -16,9 +16,9 @@ namespace Nim.Models
             set { totalPieces = value; }
         }
 
-        private int[][] boardState;
+        private Piece[,] boardState;
 
-        public int[][] BoardState
+        public Piece[,] BoardState
         {
             get { return boardState; }
             set { boardState = value; }
@@ -27,9 +27,9 @@ namespace Nim.Models
         public bool TakeAwayPiece(int row,int col)
         {
             bool didWin = false;
-            if(BoardState[row][col] == 1)
+            if(BoardState[row, col].IsRemoved == false)
             {
-                BoardState[row][col] = 0;
+                BoardState[row, col].IsRemoved = true;
                 totalPieces--;
                 if(totalPieces == 0)
                 {

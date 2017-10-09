@@ -17,7 +17,7 @@ namespace Nim.Converters
             if ((bool)value == true)
             {
 
-                brush.Color = Color.FromRgb(14, 95, 8);
+                brush.Color = Color.FromRgb(0,0,0);
 
             }
             else
