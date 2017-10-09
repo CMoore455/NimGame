@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Nim.PlayerClass
+namespace Nim.Models
 {
     public class Player
     {

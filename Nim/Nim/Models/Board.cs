@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Nim.BoardClass
+namespace Nim.Models
 {
     public class Board
     {
