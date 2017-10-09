@@ -16,20 +16,14 @@ namespace Nim.Models
             set { totalPieces = value; }
         }
 
-        private Piece[,] boardState;
-
-        public Piece[,] BoardState
-        {
-            get { return boardState; }
-            set { boardState = value; }
-        }
+        public List<List<Piece>> BoardState { get; set; }
 
         public bool TakeAwayPiece(int row,int col)
         {
             bool didWin = false;
-            if(BoardState[row, col].IsRemoved == false)
+            if(BoardState[row][col].IsRemoved == false)
             {
-                BoardState[row, col].IsRemoved = true;
+                BoardState[row][col].IsRemoved = true;
                 totalPieces--;
                 if(totalPieces == 0)
                 {

@@ -14,10 +14,10 @@ namespace Nim.Converters
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             SolidColorBrush brush = new SolidColorBrush();
-            if ((bool)value == true)
+            if ((bool)value)
             {
 
-                brush.Color = Color.FromRgb(0,0,0);
+                brush.Color = Color.FromRgb(255,255,255);
 
             }
             else

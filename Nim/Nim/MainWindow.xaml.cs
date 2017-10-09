@@ -23,27 +23,30 @@ namespace Nim
     public partial class MainWindow : Window
     {
         public Game game = new Game();
+        
         public MainWindow()
         {
             InitializeComponent();
-            MakeGameBoard();
+
         }
         public void MakeGameBoard()
         {
+            List<List<Piece>> pieces = new List<List<Piece>>();
             for(int i = 0; i < game.Rows; i++)
             {
-                for(int j = 0; j < game.Columns; j++)
+                pieces.Add(new List<Piece>());
+                for (int j = 0; j < game.Columns; j++)
                 {
                     Label l = new Label();
                     Piece p = new Piece();
-                    p.IsRemoved = true;
+                    pieces[i].Add(p);
                     l.SetValue(Grid.RowProperty, i);
-                    l.SetValue(Grid.ColumnProperty, j);
+                    l.SetValue(Grid.ColumnProperty, j);                       
                     LabelBinding(l, p);
-
-
+                    GameBoardUI.Children.Add(l);
                 }
             }
+            game.gameBoard.BoardState = pieces;
         }
 
         public void LabelBinding(Label l, Piece p)
@@ -59,13 +62,10 @@ namespace Nim
         {
             game.Rows = 2;
             game.Columns = 2;
+            MakeGameBoard();
             DifficultyMenu.Visibility = Visibility.Collapsed;
             GameBoardUI.Visibility = Visibility.Visible;
-            game.gameBoard.BoardState[0, 0].IsRemoved = false;
-            game.gameBoard.BoardState[0, 1].IsRemoved = false;
-            game.gameBoard.BoardState[1, 0].IsRemoved = false;
-            game.gameBoard.BoardState[1, 1].IsRemoved = false;
-
+            game.gameBoard.BoardState[0][1].IsRemoved = true;
         }
 
         private void PVCNameEnterButton_Click(object sender, RoutedEventArgs e)

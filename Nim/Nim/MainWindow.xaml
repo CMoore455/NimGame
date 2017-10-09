@@ -69,6 +69,7 @@
                     Content="Enter"
                     Margin="5"/>
         </StackPanel>
+        <!--end of Name Menu-->
 
         <!--Diffculty Menu-->
         <StackPanel x:Name="DifficultyMenu"
@@ -102,7 +103,8 @@
         <Grid x:Name="GameBoardUI"
               HorizontalAlignment="Center"
               Width="400"
-              Visibility="Collapsed">
+              Visibility="Collapsed"
+              ShowGridLines="True">
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
