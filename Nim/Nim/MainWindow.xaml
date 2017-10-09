@@ -49,7 +49,8 @@
                     Margin="5"/>
         </StackPanel>
         <StackPanel x:Name="PVPNameMenu"
-                    VerticalAlignment="Center">
+                    VerticalAlignment="Center"
+                    Visibility="Collapsed">
             <Label Content="Player 1 Name:" HorizontalAlignment="Center"/>
             <TextBox x:Name="PlayerOneNameBox"
                          HorizontalAlignment="Center"

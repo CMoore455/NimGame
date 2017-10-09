@@ -24,10 +24,19 @@ namespace Nim.Models
             set { boardState = value; }
         }
 
-        public bool TakeAwayPiece(int row, int col)
+        public bool TakeAwayPiece(int row,int col)
         {
-
-            return false;
+            bool didWin = false;
+            if(BoardState[row][col] == 1)
+            {
+                BoardState[row][col] = 0;
+                totalPieces--;
+                if(totalPieces == 0)
+                {
+                    didWin = true;
+                }
+            }
+            return didWin;
         }
     }
 

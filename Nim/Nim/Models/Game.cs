@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Nim.Models
 {
-    class Game
+    public class Game
     {
         public int Rows { get; set; }
         public int CurrentRow { get; set; }
