@@ -57,9 +57,10 @@ namespace Nim
             game.Columns = 2;
             MakeGameBoard();
             Row1ListBox.ItemsSource = game.gameBoard.BoardState[0];
-            //Row2ListBox.ItemsSource = game.gameBoard.BoardState[1];
+            Row2ListBox.ItemsSource = game.gameBoard.BoardState[1];
             DifficultyMenu.Visibility = Visibility.Collapsed;
             GameBoardUI.Visibility = Visibility.Visible;
+            
         }
 
         private void PVCNameEnterButton_Click(object sender, RoutedEventArgs e)
@@ -103,6 +104,16 @@ namespace Nim
                 }
             }
 
+        }
+
+        private void MedButton_Click(object sender, RoutedEventArgs e)
+        {
+            game.gameBoard.BoardState[0].RemoveAt(game.gameBoard.BoardState[0].Count - 1);
+        }
+
+        private void HardButton_Click(object sender, RoutedEventArgs e)
+        {
+            game.gameBoard.BoardState[0].RemoveAt(game.gameBoard.BoardState[0].Count - 1);
         }
     }
 }

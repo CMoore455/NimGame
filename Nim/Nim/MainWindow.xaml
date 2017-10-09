@@ -14,7 +14,7 @@
         <!--Start Menu-->
         <StackPanel x:Name="StartMenu"
                     VerticalAlignment="Center" Margin="78,229,10,212.5" Height="81"
-                    Visibility="Visible">
+                    Visibility="Collapsed">
             <Button x:Name="PVCButton"
                     Content="PVC"
                     HorizontalAlignment="Center"
@@ -74,7 +74,7 @@
         <!--Diffculty Menu-->
         <StackPanel x:Name="DifficultyMenu"
                     VerticalAlignment="Center"
-                    Visibility="Collapsed">
+                    Visibility="Visible">
             <Button x:Name="EasyButton"
                     Content="Easy"
                     HorizontalAlignment="Center"
@@ -104,7 +104,7 @@
               HorizontalAlignment="Center"
               Width="400"
               Visibility="Collapsed"
-              >
+              ShowGridLines="True">
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
@@ -113,7 +113,6 @@
             </Grid.RowDefinitions>
             <ListBox x:Name="Row1ListBox"
                      Height="40"
-                     Grid.Column="1"
                      >
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
@@ -129,9 +128,9 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>              
         </ListBox>
-            <!--<ListBox x:Name="Row2ListBox"
-                     Height="40"
-                     
+              <ListBox x:Name="Row2ListBox"
+                       Height="40"
+                       Grid.Row="1"
                      >
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
@@ -139,14 +138,14 @@
                     </ItemsPanelTemplate>
                 </ListBox.ItemsPanel>
                 <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <Border BorderBrush="Blue"
+                <DataTemplate>
+                    <Border BorderBrush="Blue"
                             BorderThickness="3">
-                            <Label Background="Aqua"/>
-                        </Border>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>-->
+                        <Label Background="Aqua"/>
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>              
+        </ListBox>
 
         </Grid>
         <!--End of Game Board-->
