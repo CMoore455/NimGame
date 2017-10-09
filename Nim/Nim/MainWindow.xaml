@@ -111,8 +111,10 @@
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
+            
             <ListBox x:Name="Row1ListBox"
                      Height="40"
+                     Grid.Row="0"
                      >
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
@@ -146,6 +148,47 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>              
         </ListBox>
+
+
+            <ListBox x:Name="Row3ListBox"
+                       Height="40"
+                       Grid.Row="2"
+                     >
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderBrush="Blue"
+                            BorderThickness="3">
+                            <Label Background="Aqua"/>
+                        </Border>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+            <ListBox x:Name="Row4ListBox"
+                       Height="40"
+                       Grid.Row="3"
+                     >
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderBrush="Blue"
+                            BorderThickness="3">
+                            <Label Background="Aqua"/>
+                        </Border>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+
 
         </Grid>
         <!--End of Game Board-->

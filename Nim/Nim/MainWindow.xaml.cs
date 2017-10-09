@@ -108,12 +108,50 @@ namespace Nim
 
         private void MedButton_Click(object sender, RoutedEventArgs e)
         {
-            game.gameBoard.BoardState[0].RemoveAt(game.gameBoard.BoardState[0].Count - 1);
+            game.Rows = 3;
+            game.Columns = 7;
+            MakeGameBoard();
+
+            Row1ListBox.ItemsSource = game.gameBoard.BoardState[0];
+            Row2ListBox.ItemsSource = game.gameBoard.BoardState[1];
+            Row3ListBox.ItemsSource = game.gameBoard.BoardState[2];
+            for (int i = 0; i < 5; i++)
+            {
+                game.gameBoard.BoardState[0].RemoveAt(game.gameBoard.BoardState[0].Count - 1);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                game.gameBoard.BoardState[1].RemoveAt(game.gameBoard.BoardState[1].Count - 1);
+            }
+            DifficultyMenu.Visibility = Visibility.Collapsed;
+            GameBoardUI.Visibility = Visibility.Visible;
+
         }
 
         private void HardButton_Click(object sender, RoutedEventArgs e)
         {
-            game.gameBoard.BoardState[0].RemoveAt(game.gameBoard.BoardState[0].Count - 1);
+            game.Rows = 4;
+            game.Columns = 9;
+            MakeGameBoard();
+            Row1ListBox.ItemsSource = game.gameBoard.BoardState[0];
+            Row2ListBox.ItemsSource = game.gameBoard.BoardState[1];
+            Row3ListBox.ItemsSource = game.gameBoard.BoardState[2];
+            Row4ListBox.ItemsSource = game.gameBoard.BoardState[3];
+
+            for (int i = 0; i < 7; i++)
+            {
+                game.gameBoard.BoardState[0].RemoveAt(game.gameBoard.BoardState[0].Count - 1);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                game.gameBoard.BoardState[1].RemoveAt(game.gameBoard.BoardState[1].Count - 1);
+            }
+            for (int i = 0; i < 1; i++)
+            {
+                game.gameBoard.BoardState[2].RemoveAt(game.gameBoard.BoardState[2].Count - 1);
+            }
+            DifficultyMenu.Visibility = Visibility.Collapsed;
+            GameBoardUI.Visibility = Visibility.Visible;
         }
     }
 }
