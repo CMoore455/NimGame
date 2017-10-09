@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Nim.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,20 @@ namespace Nim
     /// </summary>
     public partial class MainWindow : Window
     {
+        public Game game = new Game();
         public MainWindow()
         {
             InitializeComponent();
+        }
+        public void MakeGameBoard()
+        {
+            for(int i = 0; i < game.Rows; i++)
+            {
+                for(int j = 0; j < game.Columns; j++)
+                {
+                    Label l = new Label
+                }
+            }
         }
     }
 }
