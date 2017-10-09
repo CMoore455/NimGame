@@ -73,5 +73,11 @@ namespace Nim
             PVCNameMenu.Visibility = Visibility.Collapsed;
             DifficultyMenu.Visibility = Visibility.Visible;
         }
+
+        private void PVCButton_Click(object sender, RoutedEventArgs e)
+        {
+            StartMenu.Visibility = Visibility.Collapsed;
+            PVCNameMenu.Visibility = Visibility.Visible;
+        }
     }
 }

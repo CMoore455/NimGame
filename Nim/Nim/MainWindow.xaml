@@ -20,7 +20,7 @@
                     HorizontalAlignment="Center"
                     Height="30"
                     Width="60"
-                    Margin="5"
+                    Margin="5" Click="PVCButton_Click"
                     />
             <Button x:Name="PVPButton"
                     Content="PVC"
@@ -35,7 +35,7 @@
         <!--Name Menu-->
         <StackPanel x:Name="PVCNameMenu"
                    VerticalAlignment="Center"
-                    Visibility="Visible">
+                    Visibility="Collapsed">
             <TextBox x:Name="PlayeNameBox"
                      HorizontalAlignment="Center"
                      Height="25"
@@ -46,7 +46,7 @@
                     Height="30"
                     Width="60"
                     Content="Enter"
-                    Margin="5"/>
+                    Margin="5" Click="PVCNameEnterButton_Click"/>
         </StackPanel>
         <StackPanel x:Name="PVPNameMenu"
                     VerticalAlignment="Center"
