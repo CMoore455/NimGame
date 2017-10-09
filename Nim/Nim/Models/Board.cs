@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections.ObjectModel;
 
 namespace Nim.Models
 {
@@ -15,8 +16,8 @@ namespace Nim.Models
             get { return totalPieces; }
             set { totalPieces = value; }
         }
-
-        public List<List<Piece>> BoardState { get; set; }
+        
+        public ObservableCollection<ObservableCollection<Piece>> BoardState { get; set; }
 
         public bool TakeAwayPiece(int row,int col)
         {

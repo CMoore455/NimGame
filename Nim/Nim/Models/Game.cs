@@ -17,6 +17,11 @@ namespace Nim.Models
         public Board gameBoard { get; set; } = new Board();
         public int CurrentPlayerGoingIndex { get; set; }
 
+        public void HumanPlayerMove(int row, int piecesToRemove)
+        {
+
+        }
+
         //public void ComputerMove()
         //{
         //    Random rand = new Random();

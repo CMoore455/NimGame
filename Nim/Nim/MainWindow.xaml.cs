@@ -2,6 +2,7 @@
 using Nim.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,41 +32,34 @@ namespace Nim
         }
         public void MakeGameBoard()
         {
-            List<List<Piece>> pieces = new List<List<Piece>>();
+            ObservableCollection<ObservableCollection<Piece>> pieces = new ObservableCollection<ObservableCollection<Piece>>();
             for(int i = 0; i < game.Rows; i++)
             {
-                pieces.Add(new List<Piece>());
+                pieces.Add( new ObservableCollection<Piece>());
                 for (int j = 0; j < game.Columns; j++)
                 {
-                    Label l = new Label();
                     Piece p = new Piece();
-                    pieces[i].Add(p);
-                    l.SetValue(Grid.RowProperty, i);
-                    l.SetValue(Grid.ColumnProperty, j);                       
-                    LabelBinding(l, p);
-                    GameBoardUI.Children.Add(l);
+                    pieces[i].Add(p);               
                 }
             }
             game.gameBoard.BoardState = pieces;
+
         }
 
-        public void LabelBinding(Label l, Piece p)
-        {
-            BoolToBrushConverter converter = new BoolToBrushConverter();
-            l.DataContext = p;
-            Binding b = new Binding("IsRemoved");
-            b.Converter = converter;
-            l.SetBinding(Label.BackgroundProperty, b);
-        }
+        //public void LabelBinding(Label l, Piece p)
+        //{
+
+        //}
 
         private void EasyButton_Click(object sender, RoutedEventArgs e)
         {
             game.Rows = 2;
             game.Columns = 2;
             MakeGameBoard();
+            Row1ListBox.ItemsSource = game.gameBoard.BoardState[0];
+            //Row2ListBox.ItemsSource = game.gameBoard.BoardState[1];
             DifficultyMenu.Visibility = Visibility.Collapsed;
             GameBoardUI.Visibility = Visibility.Visible;
-            game.gameBoard.BoardState[0][1].IsRemoved = true;
         }
 
         private void PVCNameEnterButton_Click(object sender, RoutedEventArgs e)
@@ -78,6 +72,37 @@ namespace Nim
         {
             StartMenu.Visibility = Visibility.Collapsed;
             PVCNameMenu.Visibility = Visibility.Visible;
+        }
+
+        private void TakeButton_Click(object sender, RoutedEventArgs e)
+        {
+            int piecesAvailable= 0;
+            int piecesToTake = 0;
+            int rowPicked = 0;
+            if (!int.TryParse(WhichRowTextBox.Text, out rowPicked))
+            {
+                MessageBox.Show("Enter in a valid number");
+            }
+            else
+            {
+                for(int i = 0; i < game.gameBoard.BoardState[rowPicked].Count; i++)
+                {
+                    if(game.gameBoard.BoardState[rowPicked][i].IsRemoved == false)
+                    {
+                        piecesAvailable++;
+                    }
+                }
+
+                if(!int.TryParse(HowManyPiecesTextBox.Text, out piecesToTake))
+                {
+                    MessageBox.Show("Enter in a valid number");
+                }
+                else
+                {
+                    game.HumanPlayerMove(rowPicked, piecesToTake);
+                }
+            }
+
         }
     }
 }

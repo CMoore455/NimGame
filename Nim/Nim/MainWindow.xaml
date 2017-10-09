@@ -104,33 +104,69 @@
               HorizontalAlignment="Center"
               Width="400"
               Visibility="Collapsed"
-              ShowGridLines="True">
+              >
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-            </Grid.ColumnDefinitions>
+            <ListBox x:Name="Row1ListBox"
+                     Height="40"
+                     Grid.Column="1"
+                     >
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+                <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderBrush="Blue"
+                            BorderThickness="3">
+                        <Label Background="Aqua"/>
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>              
+        </ListBox>
+            <!--<ListBox x:Name="Row2ListBox"
+                     Height="40"
+                     
+                     >
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderBrush="Blue"
+                            BorderThickness="3">
+                            <Label Background="Aqua"/>
+                        </Border>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>-->
+
         </Grid>
         <!--End of Game Board-->
 
         <!--Control Panel-->
         <StackPanel x:Name="ControlPanel"
                     Grid.Column="1"
-                    Visibility="Collapsed"
+                    Visibility="Visible"
                     >
+            <StackPanel>
+                <Label Content="Which Row"/>
+                <TextBox x:Name="WhichRowTextBox"/>
+                <Label Content="How many pieces"/>
+                <TextBox x:Name="HowManyPiecesTextBox"/>
+            </StackPanel>
+            <Button x:Name="TakeButton"
+                    Content="Take" Click="TakeButton_Click"
+                    />
         </StackPanel>
+        
         <!--End of Control Panel-->
 
     </Grid>
