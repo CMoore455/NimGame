@@ -14,7 +14,7 @@
         <!--Start Menu-->
         <StackPanel x:Name="StartMenu"
                     VerticalAlignment="Center" Margin="78,229,10,212.5" Height="81"
-                    Visibility="Collapsed">
+                    Visibility="Visible">
             <Button x:Name="PVCButton"
                     Content="PVC"
                     HorizontalAlignment="Center"
@@ -35,7 +35,7 @@
         <!--Name Menu-->
         <StackPanel x:Name="PVCNameMenu"
                    VerticalAlignment="Center"
-                    Visibility="Visible">
+                    Visibility="Collapsed">
             <Label Content="Player 1 Name:" HorizontalAlignment="Center"/>
 
             <TextBox x:Name="PlayerNameBox"
@@ -98,7 +98,38 @@
 
         </StackPanel>
         <!--End of Difficulty Menu-->
-
+        
+        <!--Play Again Menu-->
+        <Grid x:Name="PlayAgainMenu"
+              Visibility="Collapsed">
+            <Label x:Name="WinnerLabel"
+                   Height="45"
+                   VerticalAlignment="Top"
+                   Margin="25"
+                   Content="Boris Ho Is The Winner"
+                   FontSize="21"
+                   />
+            <Label Content="Would You Like To Play Again?"
+                   Height="45"
+                   Width="350"
+                   FontSize="24"
+                   Margin="0 0 0 100"
+                   HorizontalAlignment="Center"/>
+            <Button x:Name="YesButton"
+                    Height="30"
+                    Width="100"
+                    Content="Yes"
+                    FontSize="21" Click="YesButton_Click"/>
+            <Button x:Name="NoButton"
+                    Height="30"
+                    Width="100"
+                    Content="No"
+                    FontSize="21"
+                    Margin="0 100 0 0" Click="NoButton_Click"/>
+        </Grid>
+        
+        
+        <!--End Play Again Menu-->
 
 
         <!--Game Board-->

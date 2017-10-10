@@ -19,19 +19,9 @@ namespace Nim.Models
         
         public ObservableCollection<ObservableCollection<Piece>> BoardState { get; set; }
 
-        public bool TakeAwayPiece(int row,int col)
+        public void TakeAwayPiece()
         {
-            bool didWin = false;
-            if(BoardState[row][col].IsRemoved == false)
-            {
-                BoardState[row][col].IsRemoved = true;
-                totalPieces--;
-                if(totalPieces == 0)
-                {
-                    didWin = true;
-                }
-            }
-            return didWin;
+            TotalPieces--;
         }
     }
 

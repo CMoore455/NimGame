@@ -24,7 +24,7 @@ namespace Nim
     public partial class MainWindow : Window
     {
         public Game game = new Game();
-
+        public bool won = false;
         public MainWindow()
         {
             InitializeComponent();
@@ -53,6 +53,8 @@ namespace Nim
 
         private void EasyButton_Click(object sender, RoutedEventArgs e)
         {
+            game.gameBoard.TotalPieces = 4;
+            won = false;
             game.Rows = 2;
             game.Columns = 2;
             MakeGameBoard();
@@ -60,16 +62,17 @@ namespace Nim
             Row2ListBox.ItemsSource = game.gameBoard.BoardState[1];
             DifficultyMenu.Visibility = Visibility.Collapsed;
             GameBoardUI.Visibility = Visibility.Visible;
-            Row3ListBox.Visibility = Visibility.Collapsed;
-            Row4ListBox.Visibility = Visibility.Collapsed;
 
         }
 
         private void MedButton_Click(object sender, RoutedEventArgs e)
         {
+            game.gameBoard.TotalPieces = 14;
+            won = false;
             game.Rows = 3;
             game.Columns = 7;
             MakeGameBoard();
+
 
             Row1ListBox.ItemsSource = game.gameBoard.BoardState[0];
             Row2ListBox.ItemsSource = game.gameBoard.BoardState[1];
@@ -84,12 +87,12 @@ namespace Nim
             }
             DifficultyMenu.Visibility = Visibility.Collapsed;
             GameBoardUI.Visibility = Visibility.Visible;
-            Row4ListBox.Visibility = Visibility.Collapsed;
 
         }
 
         private void HardButton_Click(object sender, RoutedEventArgs e)
         {
+            game.gameBoard.TotalPieces = 22;
             game.Rows = 4;
             game.Columns = 9;
             MakeGameBoard();
@@ -112,6 +115,7 @@ namespace Nim
             }
             DifficultyMenu.Visibility = Visibility.Collapsed;
             GameBoardUI.Visibility = Visibility.Visible;
+
         }
 
 
@@ -142,12 +146,11 @@ namespace Nim
             game.Players = new Player[2] { new Player(PlayerOneNameBox.Text, true), new Player(PlayerTwoNameBox.Text, true) };
             PVPNameMenu.Visibility = Visibility.Collapsed;
             DifficultyMenu.Visibility = Visibility.Visible;
-
         }
 
         private void TakeButton_Click(object sender, RoutedEventArgs e)
         {
-            int piecesAvailable = 0;
+
             int piecesToTake = 0;
             int rowPicked = 0;
             if (!int.TryParse(WhichRowTextBox.Text, out rowPicked))
@@ -156,13 +159,6 @@ namespace Nim
             }
             else
             {
-                for (int i = 0; i < game.gameBoard.BoardState[rowPicked].Count; i++)
-                {
-                    if (game.gameBoard.BoardState[rowPicked][i].IsRemoved == false)
-                    {
-                        piecesAvailable++;
-                    }
-                }
 
                 if (!int.TryParse(HowManyPiecesTextBox.Text, out piecesToTake))
                 {
@@ -170,12 +166,71 @@ namespace Nim
                 }
                 else
                 {
-                    game.HumanPlayerMove(rowPicked, piecesToTake);
+                    if (rowPicked > game.gameBoard.BoardState.Count)
+                    {
+                        MessageBox.Show("Hold your horses there scooter");
+                    }
+                    else
+                    {
+                        if (game.gameBoard.BoardState[rowPicked - 1].Count == 0 || piecesToTake > game.gameBoard.BoardState[rowPicked - 1].Count)
+                        {
+                            MessageBox.Show("Hold your horses there scooter");
+                        }
+                        else
+                        {
+                            for (int i = 0; i < piecesToTake; i++)
+                            {
+                                game.gameBoard.BoardState[rowPicked - 1].RemoveAt(game.gameBoard.BoardState[rowPicked - 1].Count - 1);
+                                game.gameBoard.TakeAwayPiece();
+                                if (game.CheckWin())
+                                {
+                                    won = true;
+
+                                    WinnerLabel.Content = $"{game.Players[game.CurrentPlayerGoingIndex].PlayerName} has won";
+                                    break;
+                                }
+                            }
+
+                            if (won)
+                            {
+                                GameBoardUI.Visibility = Visibility.Collapsed;
+                                PlayAgainMenu.Visibility = Visibility.Visible;
+                            }
+                            else
+                            {
+                                game.ChangeTurn();
+                                if (!game.Players[1].IsHuman)
+                                {
+                                    game.ComputerMove();
+                                    if(game.win)
+                                    {
+                                        WinnerLabel.Content = $"{game.Players[game.CurrentPlayerGoingIndex].PlayerName} has won";
+                                        GameBoardUI.Visibility = Visibility.Collapsed;
+                                        PlayAgainMenu.Visibility = Visibility.Visible;
+                                    }
+                                }
+                            }
+
+
+                        }
+
+
+                    }
+
                 }
             }
 
         }
+        private void YesButton_Click(object sender, RoutedEventArgs e)
+        {
+            PlayAgainMenu.Visibility = Visibility.Collapsed;
+            StartMenu.Visibility = Visibility.Visible;
+        }
 
-
+        private void NoButton_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Thanks For Playing");
+            Environment.Exit(0);
+        }
     }
 }

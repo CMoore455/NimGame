@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Nim.Models;
+using System.Windows;
 
 namespace Nim.Models
 {
@@ -11,41 +12,68 @@ namespace Nim.Models
     {
         public int Rows { get; set; }
         public int Columns { get; set; }
-        public int CurrentRow { get; set; }
         public int MyProperty { get; set; }
         public Player[] Players { get; set; }
         public Board gameBoard { get; set; } = new Board();
         public int CurrentPlayerGoingIndex { get; set; }
+        public bool win = false;
 
-        public void HumanPlayerMove(int row, int piecesToRemove)
+        public bool CheckWin()
         {
-
+            bool won = false;
+            if (gameBoard.TotalPieces == 1)
+            {
+                won = true;
+            }
+            return won;
         }
 
-        //public void ComputerMove()
-        //{
-        //    Random rand = new Random();
-        //    int pieces = 0;
-        //    int row = rand.Next(Rows);
-        //    for(int i = 0; i < Columns; i++)
-        //    {
-        //        if(gameBoard.BoardState[row][i]==1)
-        //        {
-        //            pieces++;
-        //        }
-        //    }
-        //    int piecesToTakeAway = rand.Next(pieces);
-        //    for (int i = 0; i < pieces; i++)
-        //    {
-        //        if (gameBoard.BoardState[row][i]== 0 && i != Columns - 1)
-        //        {
-        //            gameBoard.TakeAwayPiece(row, i++);
-        //        }
-        //        else
-        //        {
-        //        gameBoard.TakeAwayPiece(row, i);
-        //        }
-        //    }
-        //}
+        public void ChangeTurn()
+        {
+            if (CurrentPlayerGoingIndex == 0)
+            {
+                CurrentPlayerGoingIndex++;
+            }
+            else
+            {
+                CurrentPlayerGoingIndex--;
+            }
+            MessageBox.Show($"{Players[CurrentPlayerGoingIndex].PlayerName} is  up");
+        }
+
+        public void ComputerMove()
+        {
+            Random rand = new Random();
+            bool loopUp = true;
+            int rowPicked = 0;
+            int piecesToTake = 0;
+
+            while (loopUp)
+            {
+                rowPicked = rand.Next(gameBoard.BoardState.Count);
+                if (gameBoard.BoardState[rowPicked].Count != 0)
+                {
+                    loopUp = false;
+                }
+            }
+            piecesToTake = rand.Next(1, gameBoard.BoardState[rowPicked].Count);
+
+            for (int i = 0; i < piecesToTake; i++)
+            {
+                gameBoard.BoardState[rowPicked].RemoveAt(gameBoard.BoardState[rowPicked].Count - 1);
+                gameBoard.TakeAwayPiece();
+                if (CheckWin())
+                {
+                    win = true;
+                    break;
+                }
+            }
+            if(!win)
+            {
+                ChangeTurn();
+            }
+            
+
+        }
     }
 }
