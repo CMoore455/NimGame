@@ -18,6 +18,10 @@ namespace Nim.Models
         public int CurrentPlayerGoingIndex { get; set; }
         public bool win = false;
 
+        /// <summary>
+        /// This method is used to check to see if a player has won by checking the gameBoard.TotalPieces int.
+        /// </summary>
+        /// <returns></returns>
         public bool CheckWin()
         {
             bool won = false;
@@ -28,6 +32,9 @@ namespace Nim.Models
             return won;
         }
 
+        /// <summary>
+        /// This method changed the CurrentPlayerGoingIndex to the appropriate number (1 or 0). displays a MessageBox of who is going.
+        /// </summary>
         public void ChangeTurn()
         {
             if (CurrentPlayerGoingIndex == 0)
@@ -41,6 +48,9 @@ namespace Nim.Models
             MessageBox.Show($"{Players[CurrentPlayerGoingIndex].PlayerName} is up");
         }
 
+        /// <summary>
+        /// This method is for making a move with the computer
+        /// </summary>
         public void ComputerMove()
         {
             Random rand = new Random();

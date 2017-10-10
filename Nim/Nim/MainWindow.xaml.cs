@@ -31,6 +31,9 @@ namespace Nim
 
 
         }
+        /// <summary>
+        /// This method makes the game board by populating a 2d observable collection
+        /// </summary>
         public void MakeGameBoard()
         {
             ObservableCollection<ObservableCollection<Piece>> pieces = new ObservableCollection<ObservableCollection<Piece>>();
@@ -47,11 +50,11 @@ namespace Nim
 
         }
 
-        //public void LabelBinding(Label l, Piece p)
-        //{
-
-        //}
-
+        /// <summary>
+        /// This method will fill in the nessasry information for the game when the mode of Easy is selected
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void EasyButton_Click(object sender, RoutedEventArgs e)
         {
             game.gameBoard.TotalPieces = 4;
@@ -72,6 +75,11 @@ namespace Nim
 
         }
 
+        /// <summary>
+        /// This method will fill in the nessasry information for the game when the mode of Medium is selected
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MedButton_Click(object sender, RoutedEventArgs e)
         {
             game.gameBoard.TotalPieces = 14;
@@ -102,6 +110,11 @@ namespace Nim
 
         }
 
+        /// <summary>
+        /// This method will fill in the nessasry information for the game when the mode of Hard is selected
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void HardButton_Click(object sender, RoutedEventArgs e)
         {
             game.gameBoard.TotalPieces = 22;
@@ -136,7 +149,11 @@ namespace Nim
         }
 
 
-
+        /// <summary>
+        /// This method will close the mode menu and open the name menu
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void PVCButton_Click(object sender, RoutedEventArgs e)
         {
             game.CurrentPlayerGoingIndex = 0;
@@ -144,6 +161,13 @@ namespace Nim
             PVCNameMenu.Visibility = Visibility.Visible;
 
         }
+
+        /// <summary>
+        /// This method will make the player(s) and give names to them. Also will open up the difficulty menu
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+
         private void PVCNameEnterButton_Click(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrEmpty(PlayerNameBox.Text))
@@ -160,6 +184,11 @@ namespace Nim
 
         }
 
+        /// <summary>
+        /// This method will close the mode menu and open the name menu
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void PVPButton_Click(object sender, RoutedEventArgs e)
         {
             game.CurrentPlayerGoingIndex = 0;
@@ -168,6 +197,12 @@ namespace Nim
 
         }
 
+
+        /// <summary>
+        /// This method will make the player(s) and give names to them. Also will open up the difficulty menu
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void PVPNameEnterButton_Click(object sender, RoutedEventArgs e)
         {
             if(string.IsNullOrEmpty(PlayerOneNameBox.Text) || string.IsNullOrEmpty(PlayerTwoNameBox.Text))
@@ -182,6 +217,12 @@ namespace Nim
                 DifficultyMenu.Visibility = Visibility.Visible;
             }
         }
+
+        /// <summary>
+        /// This method will be the human player move. It will remove the amount of pieces from the collection specified.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
 
         private void TakeButton_Click(object sender, RoutedEventArgs e)
         {
@@ -262,6 +303,12 @@ namespace Nim
             }
 
         }
+
+        /// <summary>
+        /// This will take the user back to the main menu for a new game
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void YesButton_Click(object sender, RoutedEventArgs e)
         {
             PlayAgainMenu.Visibility = Visibility.Collapsed;
@@ -269,6 +316,11 @@ namespace Nim
             Rules.Visibility = Visibility.Visible;
         }
 
+        /// <summary>
+        /// This method closes the application
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void NoButton_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Thanks For Playing");

@@ -10,7 +10,6 @@ namespace Nim.Models
     public class Board
     {
         private int totalPieces;
-
         public int TotalPieces
         {
             get { return totalPieces; }
@@ -19,6 +18,9 @@ namespace Nim.Models
         
         public ObservableCollection<ObservableCollection<Piece>> BoardState { get; set; }
 
+        /// <summary>
+        /// This method decrements the Totalpieces int
+        /// </summary>
         public void TakeAwayPiece()
         {
             TotalPieces--;

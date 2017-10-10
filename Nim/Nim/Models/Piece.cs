@@ -10,6 +10,7 @@ namespace Nim.Models
 {
     public class Piece : INotifyPropertyChanged
     { 
+        //This is a boolean for if the piece was removed
         private bool isremoved;
 
         public bool IsRemoved
@@ -23,7 +24,7 @@ namespace Nim.Models
         }
 
 
-
+        //This is to notify if the property of IsRemoved changed
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected void FieldChanged([CallerMemberName] string field = null)
