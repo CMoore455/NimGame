@@ -14,7 +14,7 @@
         <!--Start Menu-->
         <StackPanel x:Name="StartMenu"
                     VerticalAlignment="Center" Margin="78,229,10,212.5" Height="81"
-                    Visibility="Visible">
+                    Visibility="Collapsed">
             <Button x:Name="PVCButton"
                     Content="PVC"
                     HorizontalAlignment="Center"
@@ -27,7 +27,7 @@
                     HorizontalAlignment="Center"
                     Height="30"
                     Width="60"
-                    Margin="5"
+                    Margin="5" Click="PVPButton_Click"
                     />
         </StackPanel>
         <!--End of Start Menu-->
@@ -35,8 +35,10 @@
         <!--Name Menu-->
         <StackPanel x:Name="PVCNameMenu"
                    VerticalAlignment="Center"
-                    Visibility="Collapsed">
-            <TextBox x:Name="PlayeNameBox"
+                    Visibility="Visible">
+            <Label Content="Player 1 Name:" HorizontalAlignment="Center"/>
+
+            <TextBox x:Name="PlayerNameBox"
                      HorizontalAlignment="Center"
                      Height="25"
                      Width="275"
@@ -67,7 +69,7 @@
                     Height="30"
                     Width="60"
                     Content="Enter"
-                    Margin="5"/>
+                    Margin="5" Click="PVPNameEnterButton_Click"/>
         </StackPanel>
         <!--end of Name Menu-->
 

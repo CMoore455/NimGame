@@ -24,7 +24,7 @@ namespace Nim
     public partial class MainWindow : Window
     {
         public Game game = new Game();
-        
+
         public MainWindow()
         {
             InitializeComponent();
@@ -33,13 +33,13 @@ namespace Nim
         public void MakeGameBoard()
         {
             ObservableCollection<ObservableCollection<Piece>> pieces = new ObservableCollection<ObservableCollection<Piece>>();
-            for(int i = 0; i < game.Rows; i++)
+            for (int i = 0; i < game.Rows; i++)
             {
-                pieces.Add( new ObservableCollection<Piece>());
+                pieces.Add(new ObservableCollection<Piece>());
                 for (int j = 0; j < game.Columns; j++)
                 {
                     Piece p = new Piece();
-                    pieces[i].Add(p);               
+                    pieces[i].Add(p);
                 }
             }
             game.gameBoard.BoardState = pieces;
@@ -62,7 +62,7 @@ namespace Nim
             GameBoardUI.Visibility = Visibility.Visible;
             Row3ListBox.Visibility = Visibility.Collapsed;
             Row4ListBox.Visibility = Visibility.Collapsed;
-            
+
         }
 
         private void MedButton_Click(object sender, RoutedEventArgs e)
@@ -114,21 +114,40 @@ namespace Nim
             GameBoardUI.Visibility = Visibility.Visible;
         }
 
-        private void PVCNameEnterButton_Click(object sender, RoutedEventArgs e)
-        {
-            PVCNameMenu.Visibility = Visibility.Collapsed;
-            DifficultyMenu.Visibility = Visibility.Visible;
-        }
+
 
         private void PVCButton_Click(object sender, RoutedEventArgs e)
         {
             StartMenu.Visibility = Visibility.Collapsed;
             PVCNameMenu.Visibility = Visibility.Visible;
+
+        }
+        private void PVCNameEnterButton_Click(object sender, RoutedEventArgs e)
+        {
+            game.Players = new Player[2] { new Player(PlayerNameBox.Text, true), new Player("Computer", false) };
+            PVCNameMenu.Visibility = Visibility.Collapsed;
+            DifficultyMenu.Visibility = Visibility.Visible;
+
+        }
+
+        private void PVPButton_Click(object sender, RoutedEventArgs e)
+        {
+            StartMenu.Visibility = Visibility.Collapsed;
+            PVPNameMenu.Visibility = Visibility.Visible;
+
+        }
+
+        private void PVPNameEnterButton_Click(object sender, RoutedEventArgs e)
+        {
+            game.Players = new Player[2] { new Player(PlayerOneNameBox.Text, true), new Player(PlayerTwoNameBox.Text, true) };
+            PVPNameMenu.Visibility = Visibility.Collapsed;
+            DifficultyMenu.Visibility = Visibility.Visible;
+
         }
 
         private void TakeButton_Click(object sender, RoutedEventArgs e)
         {
-            int piecesAvailable= 0;
+            int piecesAvailable = 0;
             int piecesToTake = 0;
             int rowPicked = 0;
             if (!int.TryParse(WhichRowTextBox.Text, out rowPicked))
@@ -137,15 +156,15 @@ namespace Nim
             }
             else
             {
-                for(int i = 0; i < game.gameBoard.BoardState[rowPicked].Count; i++)
+                for (int i = 0; i < game.gameBoard.BoardState[rowPicked].Count; i++)
                 {
-                    if(game.gameBoard.BoardState[rowPicked][i].IsRemoved == false)
+                    if (game.gameBoard.BoardState[rowPicked][i].IsRemoved == false)
                     {
                         piecesAvailable++;
                     }
                 }
 
-                if(!int.TryParse(HowManyPiecesTextBox.Text, out piecesToTake))
+                if (!int.TryParse(HowManyPiecesTextBox.Text, out piecesToTake))
                 {
                     MessageBox.Show("Enter in a valid number");
                 }
@@ -156,6 +175,7 @@ namespace Nim
             }
 
         }
+
 
     }
 }

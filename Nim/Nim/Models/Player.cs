@@ -30,6 +30,16 @@ namespace Nim.Models
             IsHuman = issaHuman;
         }
 
+        public Player()
+        {
+
+        }
+
+        public Player(bool issaHuman)
+        {
+            IsHuman = issaHuman;
+        }
+
 
     }
 }
