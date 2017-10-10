@@ -65,49 +65,6 @@ namespace Nim
             
         }
 
-        private void PVCNameEnterButton_Click(object sender, RoutedEventArgs e)
-        {
-            PVCNameMenu.Visibility = Visibility.Collapsed;
-            DifficultyMenu.Visibility = Visibility.Visible;
-        }
-
-        private void PVCButton_Click(object sender, RoutedEventArgs e)
-        {
-            StartMenu.Visibility = Visibility.Collapsed;
-            PVCNameMenu.Visibility = Visibility.Visible;
-        }
-
-        private void TakeButton_Click(object sender, RoutedEventArgs e)
-        {
-            int piecesAvailable= 0;
-            int piecesToTake = 0;
-            int rowPicked = 0;
-            if (!int.TryParse(WhichRowTextBox.Text, out rowPicked))
-            {
-                MessageBox.Show("Enter in a valid number");
-            }
-            else
-            {
-                for(int i = 0; i < game.gameBoard.BoardState[rowPicked].Count; i++)
-                {
-                    if(game.gameBoard.BoardState[rowPicked][i].IsRemoved == false)
-                    {
-                        piecesAvailable++;
-                    }
-                }
-
-                if(!int.TryParse(HowManyPiecesTextBox.Text, out piecesToTake))
-                {
-                    MessageBox.Show("Enter in a valid number");
-                }
-                else
-                {
-                    game.HumanPlayerMove(rowPicked, piecesToTake);
-                }
-            }
-
-        }
-
         private void MedButton_Click(object sender, RoutedEventArgs e)
         {
             game.Rows = 3;
@@ -156,5 +113,49 @@ namespace Nim
             DifficultyMenu.Visibility = Visibility.Collapsed;
             GameBoardUI.Visibility = Visibility.Visible;
         }
+
+        private void PVCNameEnterButton_Click(object sender, RoutedEventArgs e)
+        {
+            PVCNameMenu.Visibility = Visibility.Collapsed;
+            DifficultyMenu.Visibility = Visibility.Visible;
+        }
+
+        private void PVCButton_Click(object sender, RoutedEventArgs e)
+        {
+            StartMenu.Visibility = Visibility.Collapsed;
+            PVCNameMenu.Visibility = Visibility.Visible;
+        }
+
+        private void TakeButton_Click(object sender, RoutedEventArgs e)
+        {
+            int piecesAvailable= 0;
+            int piecesToTake = 0;
+            int rowPicked = 0;
+            if (!int.TryParse(WhichRowTextBox.Text, out rowPicked))
+            {
+                MessageBox.Show("Enter in a valid number");
+            }
+            else
+            {
+                for(int i = 0; i < game.gameBoard.BoardState[rowPicked].Count; i++)
+                {
+                    if(game.gameBoard.BoardState[rowPicked][i].IsRemoved == false)
+                    {
+                        piecesAvailable++;
+                    }
+                }
+
+                if(!int.TryParse(HowManyPiecesTextBox.Text, out piecesToTake))
+                {
+                    MessageBox.Show("Enter in a valid number");
+                }
+                else
+                {
+                    game.HumanPlayerMove(rowPicked, piecesToTake);
+                }
+            }
+
+        }
+
     }
 }

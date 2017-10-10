@@ -23,7 +23,7 @@
                     Margin="5" Click="PVCButton_Click"
                     />
             <Button x:Name="PVPButton"
-                    Content="PVC"
+                    Content="PVP"
                     HorizontalAlignment="Center"
                     Height="30"
                     Width="60"
