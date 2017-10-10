@@ -29,6 +29,7 @@ namespace Nim
         {
             InitializeComponent();
 
+
         }
         public void MakeGameBoard()
         {
@@ -55,13 +56,19 @@ namespace Nim
         {
             game.gameBoard.TotalPieces = 4;
             won = false;
+            game.win = false;
             game.Rows = 2;
             game.Columns = 2;
             MakeGameBoard();
             Row1ListBox.ItemsSource = game.gameBoard.BoardState[0];
             Row2ListBox.ItemsSource = game.gameBoard.BoardState[1];
+            Row3ListBox.ItemsSource = null;
+            Row4ListBox.ItemsSource = null;
             DifficultyMenu.Visibility = Visibility.Collapsed;
             GameBoardUI.Visibility = Visibility.Visible;
+            ControlPanel.Visibility = Visibility.Visible;
+            Rules.Visibility = Visibility.Collapsed;
+
 
         }
 
@@ -69,6 +76,8 @@ namespace Nim
         {
             game.gameBoard.TotalPieces = 14;
             won = false;
+            game.win = false;
+
             game.Rows = 3;
             game.Columns = 7;
             MakeGameBoard();
@@ -87,12 +96,17 @@ namespace Nim
             }
             DifficultyMenu.Visibility = Visibility.Collapsed;
             GameBoardUI.Visibility = Visibility.Visible;
+            ControlPanel.Visibility = Visibility.Visible;
+            Rules.Visibility = Visibility.Collapsed;
+
 
         }
 
         private void HardButton_Click(object sender, RoutedEventArgs e)
         {
             game.gameBoard.TotalPieces = 22;
+            won = false;
+            game.win = false;
             game.Rows = 4;
             game.Columns = 9;
             MakeGameBoard();
@@ -115,6 +129,9 @@ namespace Nim
             }
             DifficultyMenu.Visibility = Visibility.Collapsed;
             GameBoardUI.Visibility = Visibility.Visible;
+            ControlPanel.Visibility = Visibility.Visible;
+            Rules.Visibility = Visibility.Collapsed;
+
 
         }
 
@@ -122,20 +139,30 @@ namespace Nim
 
         private void PVCButton_Click(object sender, RoutedEventArgs e)
         {
+            game.CurrentPlayerGoingIndex = 0;
             StartMenu.Visibility = Visibility.Collapsed;
             PVCNameMenu.Visibility = Visibility.Visible;
 
         }
         private void PVCNameEnterButton_Click(object sender, RoutedEventArgs e)
         {
-            game.Players = new Player[2] { new Player(PlayerNameBox.Text, true), new Player("Computer", false) };
-            PVCNameMenu.Visibility = Visibility.Collapsed;
-            DifficultyMenu.Visibility = Visibility.Visible;
+            if (string.IsNullOrEmpty(PlayerNameBox.Text))
+            {
+                MessageBox.Show("You Must Enter in A Name");
+            }
+            else
+            {
+
+                game.Players = new Player[2] { new Player(PlayerNameBox.Text, true), new Player("Computer", false) };
+                PVCNameMenu.Visibility = Visibility.Collapsed;
+                DifficultyMenu.Visibility = Visibility.Visible;
+            }
 
         }
 
         private void PVPButton_Click(object sender, RoutedEventArgs e)
         {
+            game.CurrentPlayerGoingIndex = 0;
             StartMenu.Visibility = Visibility.Collapsed;
             PVPNameMenu.Visibility = Visibility.Visible;
 
@@ -143,9 +170,17 @@ namespace Nim
 
         private void PVPNameEnterButton_Click(object sender, RoutedEventArgs e)
         {
-            game.Players = new Player[2] { new Player(PlayerOneNameBox.Text, true), new Player(PlayerTwoNameBox.Text, true) };
-            PVPNameMenu.Visibility = Visibility.Collapsed;
-            DifficultyMenu.Visibility = Visibility.Visible;
+            if(string.IsNullOrEmpty(PlayerOneNameBox.Text) || string.IsNullOrEmpty(PlayerTwoNameBox.Text))
+            {
+                MessageBox.Show("You Must Enter In A Name");
+            }
+            else
+            {
+
+                game.Players = new Player[2] { new Player(PlayerOneNameBox.Text, true), new Player(PlayerTwoNameBox.Text, true) };
+                PVPNameMenu.Visibility = Visibility.Collapsed;
+                DifficultyMenu.Visibility = Visibility.Visible;
+            }
         }
 
         private void TakeButton_Click(object sender, RoutedEventArgs e)
@@ -187,6 +222,9 @@ namespace Nim
                                     won = true;
 
                                     WinnerLabel.Content = $"{game.Players[game.CurrentPlayerGoingIndex].PlayerName} has won";
+                                    PlayerNameBox.Text = null;
+                                    PlayerOneNameBox.Text = null;
+                                    PlayerTwoNameBox.Text = null;
                                     break;
                                 }
                             }
@@ -202,9 +240,12 @@ namespace Nim
                                 if (!game.Players[1].IsHuman)
                                 {
                                     game.ComputerMove();
-                                    if(game.win)
+                                    if (game.win)
                                     {
                                         WinnerLabel.Content = $"{game.Players[game.CurrentPlayerGoingIndex].PlayerName} has won";
+                                        PlayerNameBox.Text = null;
+                                        PlayerOneNameBox.Text = null;
+                                        PlayerTwoNameBox.Text = null;
                                         GameBoardUI.Visibility = Visibility.Collapsed;
                                         PlayAgainMenu.Visibility = Visibility.Visible;
                                     }
@@ -225,6 +266,7 @@ namespace Nim
         {
             PlayAgainMenu.Visibility = Visibility.Collapsed;
             StartMenu.Visibility = Visibility.Visible;
+            Rules.Visibility = Visibility.Visible;
         }
 
         private void NoButton_Click(object sender, RoutedEventArgs e)

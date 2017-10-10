@@ -6,15 +6,18 @@
         xmlns:local="clr-namespace:Nim"
         mc:Ignorable="d"
         Title="Nim Game" Height="550" Width="700">
-    <Grid>
+    <Grid Background="Aqua">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="80*"/>
             <ColumnDefinition Width="20*"/>
         </Grid.ColumnDefinitions>
         <!--Start Menu-->
         <StackPanel x:Name="StartMenu"
-                    VerticalAlignment="Center" Margin="78,229,10,212.5" Height="81"
-                    Visibility="Visible">
+                    VerticalAlignment="Center" Margin="247,228,162.667,172.667" Height="120"
+                    Visibility="Visible"
+                    HorizontalAlignment="Center" Width="145">
+            <Label Content="Choose a Game Mode"
+/>
             <Button x:Name="PVCButton"
                     Content="PVC"
                     HorizontalAlignment="Center"
@@ -29,9 +32,21 @@
                     Width="60"
                     Margin="5" Click="PVPButton_Click"
                     />
+
         </StackPanel>
         <!--End of Start Menu-->
-
+        <StackPanel x:Name="Rules"
+                    VerticalAlignment="Top">
+            <Label Content="Rules Of Nim:"
+                   FontSize="18"/>
+            <Label Content="Nim is a mathematical game of strategy in which"
+                   />
+            <Label Content="two players take turns removing objects from distinct heaps."/>
+            <Label Content="On each turn, a player must remove at least one object,"/>
+            <Label Content="and may remove any number of objects provided they all come from the same heap"/>
+            <Label Content=" The goal of the game is to avoid being the player who must remove the last object."
+                   />
+        </StackPanel>
         <!--Name Menu-->
         <StackPanel x:Name="PVCNameMenu"
                    VerticalAlignment="Center"
@@ -98,7 +113,7 @@
 
         </StackPanel>
         <!--End of Difficulty Menu-->
-        
+
         <!--Play Again Menu-->
         <Grid x:Name="PlayAgainMenu"
               Visibility="Collapsed">
@@ -127,8 +142,8 @@
                     FontSize="21"
                     Margin="0 100 0 0" Click="NoButton_Click"/>
         </Grid>
-        
-        
+
+
         <!--End Play Again Menu-->
 
 
@@ -144,7 +159,7 @@
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
-            
+
             <ListBox x:Name="Row1ListBox"
                      Height="40"
                      Grid.Row="0"
@@ -155,17 +170,17 @@
                     </ItemsPanelTemplate>
                 </ListBox.ItemsPanel>
                 <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <Border BorderBrush="Blue"
+                    <DataTemplate>
+                        <Border BorderBrush="Blue"
                             BorderThickness="3">
-                        <Label Background="Aqua"/>
-                    </Border>
-                </DataTemplate>
-            </ListBox.ItemTemplate>     
-                
-                
-        </ListBox>
-              <ListBox x:Name="Row2ListBox"
+                            <Label Background="Aqua"/>
+                        </Border>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+
+
+            </ListBox>
+            <ListBox x:Name="Row2ListBox"
                        Height="40"
                        Grid.Row="1"
                      >
@@ -175,14 +190,14 @@
                     </ItemsPanelTemplate>
                 </ListBox.ItemsPanel>
                 <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <Border BorderBrush="Blue"
+                    <DataTemplate>
+                        <Border BorderBrush="Blue"
                             BorderThickness="3">
-                        <Label Background="Aqua"/>
-                    </Border>
-                </DataTemplate>
-            </ListBox.ItemTemplate>              
-        </ListBox>
+                            <Label Background="Aqua"/>
+                        </Border>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
 
 
             <ListBox x:Name="Row3ListBox"
@@ -231,7 +246,7 @@
         <!--Control Panel-->
         <StackPanel x:Name="ControlPanel"
                     Grid.Column="1"
-                    Visibility="Visible"
+                    Visibility="Collapsed"
                     >
             <StackPanel>
                 <Label Content="Which Row"/>
@@ -243,7 +258,7 @@
                     Content="Take" Click="TakeButton_Click"
                     />
         </StackPanel>
-        
+
         <!--End of Control Panel-->
 
     </Grid>

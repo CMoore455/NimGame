@@ -38,7 +38,7 @@ namespace Nim.Models
             {
                 CurrentPlayerGoingIndex--;
             }
-            MessageBox.Show($"{Players[CurrentPlayerGoingIndex].PlayerName} is  up");
+            MessageBox.Show($"{Players[CurrentPlayerGoingIndex].PlayerName} is up");
         }
 
         public void ComputerMove()
